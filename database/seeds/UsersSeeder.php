@@ -85,8 +85,8 @@ class UsersSeeder extends Seeder
 
         DB::table('users')->insert([
             "id"                => 2,
-            'username'          =>  "jdrodriguezr61",
-            'password'          => bcrypt('foxylabs'),
+            'username'          =>  "promotor",
+            'password'          => bcrypt('code1234'),
             'email'             => "jdrodriguezr61@gmail.com",
             'nombres'         => "Daniel",
             'apellidos'          => "Rodriguez",
@@ -101,19 +101,24 @@ class UsersSeeder extends Seeder
 
         DB::table('users')->insert([
             "id"                => 3,
-            'username'          =>  "godoy-alejandro",
-            'password'          => bcrypt('foxylabs'),
-            'email'             => "godoy-alejandro@hotmail.com",
-            'nombres'         => "Alejandro",
-            'apellidos'          => "Godoy",
-            'codigo'       => "dW5kZWZpbm",
-            'descripcion'       => "Vendedor del sistema",
-            'nacimiento'          => "1999-01-01",
+            'username'          =>  "edecan",
+            'password'          => bcrypt('code1234'),
+            'email'             => "daniel.rodriguez@gmail.com",
+            'nombres'         => "Daniela",
+            'apellidos'          => "Rodrigueza",
+            'descripcion'       => "Edecan del sistema",
+            'codigo'       => "lndWV6cjYx",
+            'nacimiento'          => "1995-01-06",
             'state'             => 1,
             'rol'             => 2,
             'created_at'        => date('Y-m-d H:m:s'),
             'updated_at'        => date('Y-m-d H:m:s')
         ]);
+
+
+
+        
+
 
 
     }

@@ -15,6 +15,15 @@ class CreateComentariosEncuentasTable extends Migration
     {
         Schema::create('comentarios_encuestas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('titulo')->nullable()->default(null);
+            $table->string('nombre')->nullable()->default(null);
+            $table->string('comentario')->nullable()->default(null);
+            $table->string('imagen')->nullable()->default(null);
+            $table->string('url')->nullable()->default(null);
+            $table->integer('state')->nullable()->default(1);
+            
+            $table->integer('encuesta')->nullable()->default(null)->unsigned();
+            $table->foreign('encuesta')->references('id')->on('encuestas')->onDelete('cascade');
             $table->timestamps();
         });
     }
