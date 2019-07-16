@@ -20,16 +20,16 @@ class UsersSeeder extends Seeder
             'updated_at'        => date('Y-m-d H:m:s')
         ]);
         DB::table('roles')->insert([
-            'titulo'       => 'Usuario',
-            'descripcion'       => 'Usuario Comun del sistema',
+            'titulo'       => 'Promotor',
+            'descripcion'       => 'Promotor Eventos',
             'state'       => 1,
             'created_at'        => date('Y-m-d H:m:s'),
             'updated_at'        => date('Y-m-d H:m:s')
         ]);
 
         DB::table('roles')->insert([
-            'titulo'       => 'Cliente',
-            'descripcion'       => 'Cliente de entradas en el sistema',
+            'titulo'       => 'Edecan',
+            'descripcion'       => 'Edecan de Evento',
             'state'       => 1,
             'created_at'        => date('Y-m-d H:m:s'),
             'updated_at'        => date('Y-m-d H:m:s')
@@ -110,7 +110,7 @@ class UsersSeeder extends Seeder
             'codigo'       => "lndWV6cjYx",
             'nacimiento'          => "1995-01-06",
             'state'             => 1,
-            'rol'             => 2,
+            'rol'             => 3,
             'created_at'        => date('Y-m-d H:m:s'),
             'updated_at'        => date('Y-m-d H:m:s')
         ]);
