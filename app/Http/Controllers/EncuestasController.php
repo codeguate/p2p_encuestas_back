@@ -101,7 +101,7 @@ class EncuestasController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'inicio'          => 'required',
+            'fecha_inicio'          => 'required',
             'user'          => 'required',
         ]);
         if ( $validator->fails() ) {
