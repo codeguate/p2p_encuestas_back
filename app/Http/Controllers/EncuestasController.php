@@ -32,7 +32,7 @@ class EncuestasController extends Controller
                     break;
                 }
                 case 'proximos-principales':{
-                    $objectSee = Encuestas::whereRaw('fecha_inicio>? and type=2',[$id])->with('vendedores')->get();
+                    $objectSee = Encuestas::whereRaw('fecha_inicio>? and tipo=2',[$id])->with('vendedores')->get();
                     break;
                 }
                 case 'actuales':{
@@ -129,7 +129,7 @@ class EncuestasController extends Controller
                 $newObject->fin            = $request->get('fecha_fin')." ".$request->get('hora_fin');
                 $newObject->latitud            = $request->get('latitud');
                 $newObject->longitud            = $request->get('longitud');
-                $newObject->type            = $request->get('type');
+                $newObject->tipo            = $request->get('tipo');
                 $newObject->state            = $request->get('state');
                 $newObject->user            = $request->get('user');
                 $newObject->save();
@@ -202,7 +202,7 @@ class EncuestasController extends Controller
                 $objectUpdate->fin = $request->get('fin', $objectUpdate->fin);
                 $objectUpdate->latitud = $request->get('latitud', $objectUpdate->latitud);
                 $objectUpdate->longitud = $request->get('longitud', $objectUpdate->longitud);
-                $objectUpdate->type = $request->get('type', $objectUpdate->type);
+                $objectUpdate->tipo = $request->get('tipo', $objectUpdate->tipo);
                 $objectUpdate->state = $request->get('state', $objectUpdate->state);
                 $objectUpdate->evento = $request->get('evento', $objectUpdate->evento);
     
