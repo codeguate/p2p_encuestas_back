@@ -13,7 +13,6 @@
         "laravel/tinker": "~1.0",
         "league/flysystem-aws-s3-v3": "~1.0",
         "mpdf/mpdf": "^8.0",
-        "rodrigowba/apiwha-php-sdk": "^1.0",
         "simplesoftwareio/simple-qrcode": "~2"
     },
     "require-dev": {
