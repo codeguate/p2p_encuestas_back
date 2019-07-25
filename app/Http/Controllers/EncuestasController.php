@@ -209,6 +209,8 @@ class EncuestasController extends Controller
                 $objectUpdate->tipo = $request->get('tipo', $objectUpdate->tipo);
                 $objectUpdate->state = $request->get('state', $objectUpdate->state);
                 $objectUpdate->evento = $request->get('evento', $objectUpdate->evento);
+                $objectUpdate->asistentes = $request->get('asistentes', $objectUpdate->asistentes);
+                $objectUpdate->ventas = $request->get('ventas', $objectUpdate->ventas);
     
                 $objectUpdate->save();
                 return Response::json($objectUpdate, 200);

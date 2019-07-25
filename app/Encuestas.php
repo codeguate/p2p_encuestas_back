@@ -12,6 +12,10 @@ class Encuestas extends Model
         return $this->hasMany('App\EncuestasImgs','encuesta','id');
     }
 
+    public function comentarios(){
+        return $this->hasMany('App\ComentariosEncuestas','encuesta','id');
+    }
+
     public function vendedores(){
         return $this->hasOne('App\Users','id','user');
     }
