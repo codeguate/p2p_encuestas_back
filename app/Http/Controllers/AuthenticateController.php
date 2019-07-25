@@ -8,6 +8,7 @@ use App\Users;
 use Response;
 use Validator;
 use Auth;
+use Storage;
 
 class AuthenticateController extends Controller
 {
