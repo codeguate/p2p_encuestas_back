@@ -159,6 +159,9 @@ class EncuestasController extends Controller
     {
         $objectSee = Encuestas::find($id);
         if ($objectSee) {
+            $objectSee->imgs;
+            $objectSee->vendedores;
+            $objectSee->comentarios;
             return Response::json($objectSee, 200);
     
         }
