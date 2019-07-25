@@ -137,6 +137,10 @@ class EncuestasController extends Controller
                 $newObject->state            = $request->get('state');
                 $newObject->user            = $request->get('user');
                 $newObject->save();
+
+                $newObject->imgs;
+                $newObject->vendedores;
+                $newObject->comentarios;
                 return Response::json($newObject, 200);
     
             } catch (Exception $e) {
@@ -216,6 +220,9 @@ class EncuestasController extends Controller
                 $objectUpdate->ventas = $request->get('ventas', $objectUpdate->ventas);
     
                 $objectUpdate->save();
+                $objectUpdate->imgs;
+                $objectUpdate->vendedores;
+                $objectUpdate->comentarios;
                 return Response::json($objectUpdate, 200);
             } catch (Exception $e) {
                 $returnData = array (
