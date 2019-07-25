@@ -24,27 +24,27 @@ class EncuestasController extends Controller
         if($request->get('filter')){
             switch ($request->get('filter')) {
                 case 'proximos':{
-                    $objectSee = Encuestas::whereRaw('fecha_inicio>?',[$id])->with('vendedores')->get();
+                    $objectSee = Encuestas::whereRaw('fecha_inicio>?',[$id])->with('vendedores','imgs','comentarios')->get();
                     break;
                 }
                 case 'buscar':{
-                    $objectSee = Encuestas::whereRaw('fecha_inicio=? and titulo=?',[$state,$id])->with('vendedores')->first();
+                    $objectSee = Encuestas::whereRaw('fecha_inicio=? and titulo=?',[$state,$id])->with('vendedores','imgs','comentarios')->first();
                     break;
                 }
                 case 'proximos-principales':{
-                    $objectSee = Encuestas::whereRaw('fecha_inicio>? and tipo=2',[$id])->with('vendedores')->get();
+                    $objectSee = Encuestas::whereRaw('fecha_inicio>? and tipo=2',[$id])->with('vendedores','imgs','comentarios')->get();
                     break;
                 }
                 case 'actuales':{
-                    $objectSee = Encuestas::whereRaw('inicio<? and fin>?',[$id])->with('vendedores')->get();
+                    $objectSee = Encuestas::whereRaw('inicio<? and fin>?',[$id])->with('vendedores','imgs','comentarios')->get();
                     break;
                 }
                 case 'user':{
-                    $objectSee = Encuestas::whereRaw('user=?',[$id])->with('vendedores')->get();
+                    $objectSee = Encuestas::whereRaw('user=?',[$id])->with('vendedores','imgs','comentarios')->get();
                     break;
                 }
                 case 'pasados':{
-                    $objectSee = Encuestas::whereRaw('fecha_fin<?',[$id,$state])->with('vendedores')->get();
+                    $objectSee = Encuestas::whereRaw('fecha_fin<?',[$id,$state])->with('vendedores','imgs','comentarios')->get();
                     break;
                 }
                 case 'proximos_eventos':{
@@ -60,17 +60,17 @@ class EncuestasController extends Controller
                     break;
                 }
                 case 'evento':{
-                    $objectSee = Encuestas::whereRaw('evento=?',[$id])->with('vendedores')->get();
+                    $objectSee = Encuestas::whereRaw('evento=?',[$id])->with('vendedores','imgs','comentarios')->get();
                     break;
                 }
                 default:{
-                    $objectSee = Encuestas::whereRaw('evento=? and state=?',[$id,$state])->with('vendedores')->get();
+                    $objectSee = Encuestas::whereRaw('evento=? and state=?',[$id,$state])->with('vendedores','imgs','comentarios')->get();
                     break;
                 }
     
             }
         }else{
-            $objectSee = Encuestas::whereRaw('evento=?',[$id])->with('vendedores')->get();
+            $objectSee = Encuestas::whereRaw('evento=?',[$id])->with('vendedores','imgs','comentarios')->get();
         }
     
         if ($objectSee) {
