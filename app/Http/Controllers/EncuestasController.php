@@ -39,6 +39,10 @@ class EncuestasController extends Controller
                     $objectSee = Encuestas::whereRaw('inicio<? and fin>?',[$id])->with('vendedores')->get();
                     break;
                 }
+                case 'user':{
+                    $objectSee = Encuestas::whereRaw('user=?',[$id])->with('vendedores')->get();
+                    break;
+                }
                 case 'pasados':{
                     $objectSee = Encuestas::whereRaw('fecha_fin<?',[$id,$state])->with('vendedores')->get();
                     break;
