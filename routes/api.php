@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 Route::resource('users', 'UsersController');
 Route::resource('encuestas', 'EncuestasController');
 Route::resource('encuestasimgs', 'EncuestasImgsController');
+Route::resource('edecanes', 'EdecanesController');
 Route::resource('comentariosencuestas', 'ComentariosEncuestasController');
 Route::resource('roles', 'RolesController');
 Route::resource('anuncios', 'AnunciosController');
@@ -32,6 +33,7 @@ Route::resource('eventosvendedor', 'EventosVendedorController');
 Route::resource('eventosvendedormensajeria', 'EventosVendedorMensajeriaController');
 Route::resource('eventosventa', 'EventosVentaController');
 
+Route::get('filter/{id}/edecanes/{state}', "EdecanesController@getThisByFilter");
 Route::get('filter/{id}/encuestas/{state}', "EncuestasController@getThisByFilter");
 Route::get('filter/{id}/encuestasimgs/{state}', "EncuestasImgsController@getThisByFilter");
 Route::get('filter/{id}/comentariosencuestas/{state}', "ComentariosEncuestasController@getThisByFilter");
