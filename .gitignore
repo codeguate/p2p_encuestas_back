@@ -11,5 +11,5 @@ npm-debug.log
 yarn-error.log
 composer.lock
 .env
-
+config/filesystems.php 
 *.zip
