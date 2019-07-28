@@ -134,7 +134,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $objectSee = Users::whereRaw('id=?',$id)->with('roles','comprados','referidos')->first();
+        $objectSee = Users::whereRaw('id=?',$id)->with('roles','comprados','edecanes')->first();
         if ($objectSee) {
             return Response::json($objectSee, 200);
         }
