@@ -62,7 +62,7 @@ class UsersSeeder extends Seeder
         DB::table('marcas')->insert([
             'titulo'       => 'P2P',
             'descripcion'       => 'P2P',
-            'type'       => 1,
+            'tipo'       => 1,
             'state'       => 1,
             'created_at'        => date('Y-m-d H:m:s'),
             'updated_at'        => date('Y-m-d H:m:s')
