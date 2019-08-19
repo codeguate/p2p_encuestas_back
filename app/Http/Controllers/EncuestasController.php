@@ -16,7 +16,7 @@ class EncuestasController extends Controller
     */
     public function index()
     {
-        return Response::json(Encuestas::all(), 200);
+        return Response::json(Encuestas::with('vendedores','imgs','comentarios','marcas')->get(), 200);
     }
     
     public function getThisByFilter(Request $request, $id,$state)
@@ -68,13 +68,13 @@ class EncuestasController extends Controller
                     break;
                 }
                 default:{
-                    $objectSee = Encuestas::whereRaw('evento=? and state=?',[$id,$state])->with('vendedores','imgs','comentarios','marcas')->get();
+                    $objectSee = Encuestas::with('vendedores','imgs','comentarios','marcas')->get();
                     break;
                 }
     
             }
         }else{
-            $objectSee = Encuestas::whereRaw('evento=?',[$id])->with('vendedores','imgs','comentarios','marcas')->get();
+            $objectSee = Encuestas::whereRaw('evento=? and state=?',[$id,$state])->with('vendedores','imgs','comentarios','marcas')->get();
         }
     
         if ($objectSee) {
