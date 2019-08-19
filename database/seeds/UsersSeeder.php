@@ -59,6 +59,14 @@ class UsersSeeder extends Seeder
             'updated_at'        => date('Y-m-d H:m:s')
         ]);
 
+        DB::table('marcas')->insert([
+            'titulo'       => 'P2P',
+            'descripcion'       => 'P2P',
+            'type'       => 1,
+            'state'       => 1,
+            'created_at'        => date('Y-m-d H:m:s'),
+            'updated_at'        => date('Y-m-d H:m:s')
+        ]);
 
         DB::table('categoria_eventos')->insert([
             'titulo'       => 'Otros',

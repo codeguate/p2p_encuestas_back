@@ -41,6 +41,9 @@ class CreateEncuestasTable extends Migration
             $table->integer('autoriza')->nullable()->default(null)->unsigned();
             $table->foreign('autoriza')->references('id')->on('users')->onDelete('cascade');
 
+            $table->integer('marca')->nullable()->default(null)->unsigned();
+            $table->foreign('marca')->references('id')->on('marcas')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

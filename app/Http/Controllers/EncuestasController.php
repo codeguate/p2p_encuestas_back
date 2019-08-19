@@ -24,27 +24,31 @@ class EncuestasController extends Controller
         if($request->get('filter')){
             switch ($request->get('filter')) {
                 case 'proximos':{
-                    $objectSee = Encuestas::whereRaw('fecha_inicio>?',[$id])->with('vendedores','imgs','comentarios')->get();
+                    $objectSee = Encuestas::whereRaw('fecha_inicio>?',[$id])->with('vendedores','imgs','comentarios','marcas')->get();
                     break;
                 }
                 case 'buscar':{
-                    $objectSee = Encuestas::whereRaw('fecha_inicio=? and titulo=?',[$state,$id])->with('vendedores','imgs','comentarios')->first();
+                    $objectSee = Encuestas::whereRaw('fecha_inicio=? and titulo=?',[$state,$id])->with('vendedores','imgs','comentarios','marcas')->first();
                     break;
                 }
                 case 'proximos-principales':{
-                    $objectSee = Encuestas::whereRaw('fecha_inicio>? and tipo=2',[$id])->with('vendedores','imgs','comentarios')->get();
+                    $objectSee = Encuestas::whereRaw('fecha_inicio>? and tipo=2',[$id])->with('vendedores','imgs','comentarios','marcas')->get();
                     break;
                 }
                 case 'actuales':{
-                    $objectSee = Encuestas::whereRaw('inicio<? and fin>?',[$id])->with('vendedores','imgs','comentarios')->get();
+                    $objectSee = Encuestas::whereRaw('inicio<? and fin>?',[$id])->with('vendedores','imgs','comentarios','marcas')->get();
                     break;
                 }
                 case 'user':{
-                    $objectSee = Encuestas::whereRaw('user=?',[$id])->with('vendedores','imgs','comentarios')->get();
+                    $objectSee = Encuestas::whereRaw('user=?',[$id])->with('vendedores','imgs','comentarios','marcas')->get();
+                    break;
+                }
+                case 'marca':{
+                    $objectSee = Encuestas::whereRaw('marca=?',[$id])->with('vendedores','imgs','comentarios','marcas')->get();
                     break;
                 }
                 case 'pasados':{
-                    $objectSee = Encuestas::whereRaw('fecha_fin<?',[$id,$state])->with('vendedores','imgs','comentarios')->get();
+                    $objectSee = Encuestas::whereRaw('fecha_fin<?',[$id,$state])->with('vendedores','imgs','comentarios','marcas')->get();
                     break;
                 }
                 case 'proximos_eventos':{
@@ -60,17 +64,17 @@ class EncuestasController extends Controller
                     break;
                 }
                 case 'evento':{
-                    $objectSee = Encuestas::whereRaw('evento=?',[$id])->with('vendedores','imgs','comentarios')->get();
+                    $objectSee = Encuestas::whereRaw('evento=?',[$id])->with('vendedores','imgs','comentarios','marcas')->get();
                     break;
                 }
                 default:{
-                    $objectSee = Encuestas::whereRaw('evento=? and state=?',[$id,$state])->with('vendedores','imgs','comentarios')->get();
+                    $objectSee = Encuestas::whereRaw('evento=? and state=?',[$id,$state])->with('vendedores','imgs','comentarios','marcas')->get();
                     break;
                 }
     
             }
         }else{
-            $objectSee = Encuestas::whereRaw('evento=?',[$id])->with('vendedores','imgs','comentarios')->get();
+            $objectSee = Encuestas::whereRaw('evento=?',[$id])->with('vendedores','imgs','comentarios','marcas')->get();
         }
     
         if ($objectSee) {
@@ -134,6 +138,7 @@ class EncuestasController extends Controller
                 $newObject->latitud            = $request->get('latitud');
                 $newObject->longitud            = $request->get('longitud');
                 $newObject->tipo            = $request->get('tipo');
+                $newObject->marca            = $request->get('marca');
                 $newObject->state            = $request->get('state');
                 $newObject->user            = $request->get('user');
                 $newObject->save();
@@ -141,6 +146,7 @@ class EncuestasController extends Controller
                 $newObject->imgs;
                 $newObject->vendedores;
                 $newObject->comentarios;
+                $newObject->marcas;
                 return Response::json($newObject, 200);
     
             } catch (Exception $e) {
@@ -161,11 +167,8 @@ class EncuestasController extends Controller
     */
     public function show($id)
     {
-        $objectSee = Encuestas::find($id);
+        $objectSee = Encuestas::with('imgs','comentarios','marcas')->whereRaw("id=?",[$id])->first();
         if ($objectSee) {
-            $objectSee->imgs;
-            $objectSee->vendedores;
-            $objectSee->comentarios;
             return Response::json($objectSee, 200);
     
         }
@@ -218,11 +221,13 @@ class EncuestasController extends Controller
                 $objectUpdate->evento = $request->get('evento', $objectUpdate->evento);
                 $objectUpdate->asistentes = $request->get('asistentes', $objectUpdate->asistentes);
                 $objectUpdate->ventas = $request->get('ventas', $objectUpdate->ventas);
+                $objectUpdate->marca = $request->get('marca', $objectUpdate->marca);
     
                 $objectUpdate->save();
                 $objectUpdate->imgs;
                 $objectUpdate->vendedores;
                 $objectUpdate->comentarios;
+                $objectUpdate->marcas;
                 return Response::json($objectUpdate, 200);
             } catch (Exception $e) {
                 $returnData = array (

@@ -32,7 +32,9 @@ Route::resource('eventosimgs', 'EventosImgsController');
 Route::resource('eventosvendedor', 'EventosVendedorController');
 Route::resource('eventosvendedormensajeria', 'EventosVendedorMensajeriaController');
 Route::resource('eventosventa', 'EventosVentaController');
+Route::resource('marcas', 'MarcasController');
 
+Route::get('filter/{id}/marcas/{state}', "MarcasController@getThisByFilter");
 Route::get('filter/{id}/edecanes/{state}', "EdecanesController@getThisByFilter");
 Route::get('filter/{id}/encuestas/{state}', "EncuestasController@getThisByFilter");
 Route::get('filter/{id}/encuestasimgs/{state}', "EncuestasImgsController@getThisByFilter");
