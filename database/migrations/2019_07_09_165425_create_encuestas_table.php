@@ -19,6 +19,8 @@ class CreateEncuestasTable extends Migration
             $table->string('imagen')->nullable()->default(null);
             $table->string('descripcion')->nullable()->default(null);
             $table->string('direccion')->nullable()->default(null);
+            $table->string('edades')->nullable()->default(null);
+            $table->string('generos')->nullable()->default(null);
             $table->double('asistentes')->nullable()->default(null);
             $table->double('ventas')->nullable()->default(null);
             $table->time('hora_inicio')->nullable()->default(null);

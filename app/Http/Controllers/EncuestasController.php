@@ -132,6 +132,8 @@ class EncuestasController extends Controller
                 $newObject->hora_inicio            = $request->get('hora_inicio');
                 $newObject->hora_fin            = $request->get('hora_fin');
                 $newObject->fecha_inicio            = $request->get('fecha_inicio');
+                $newObject->edades            = $request->get('edades');
+                $newObject->generos            = $request->get('generos');
                 $newObject->fecha_fin            = $request->get('fecha_fin');
                 $newObject->inicio            = $request->get('fecha_inicio')." ".$request->get('hora_inicio');
                 $newObject->fin            = $request->get('fecha_fin')." ".$request->get('hora_fin');
@@ -212,6 +214,8 @@ class EncuestasController extends Controller
                 $objectUpdate->hora_fin = $request->get('hora_fin', $objectUpdate->hora_fin);
                 $objectUpdate->fecha_inicio = $request->get('fecha_inicio', $objectUpdate->fecha_inicio);
                 $objectUpdate->fecha_fin = $request->get('fecha_fin', $objectUpdate->fecha_fin);
+                $objectUpdate->edades = $request->get('edades', $objectUpdate->edades);
+                $objectUpdate->generos = $request->get('generos', $objectUpdate->generos);
                 $objectUpdate->inicio = $request->get('inicio', $objectUpdate->inicio);
                 $objectUpdate->fin = $request->get('fin', $objectUpdate->fin);
                 $objectUpdate->latitud = $request->get('latitud', $objectUpdate->latitud);
