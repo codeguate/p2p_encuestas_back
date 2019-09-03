@@ -23,4 +23,8 @@ class Encuestas extends Model
     public function marcas(){
         return $this->hasOne('App\Marcas','id','marca');
     }
+
+    public function usuarios(){
+        return $this->hasOne('App\Users','id','user');
+    }
 }

@@ -32,4 +32,8 @@ class Users extends Authenticatable
     public function myReferidos(){
         return $this->hasOne('App\Users','id','referido');
     }
+
+    public function reportes(){
+        return $this->hasMany('App\Encuestas','user','id');
+    }
 }

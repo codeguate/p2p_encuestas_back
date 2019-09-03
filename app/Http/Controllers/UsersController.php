@@ -24,12 +24,12 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return Response::json(Users::with('roles')->get(), 200);
+        return Response::json(Users::with('roles','reportes')->get(), 200);
     }
 
     public function getUsersByRol($id)
     {
-        return Response::json(Users::whereRaw('rol=?',$id)->with('roles')->get(), 200);
+        return Response::json(Users::whereRaw('rol=?',$id)->with('roles','reportes')->get(), 200);
     }
 
     /**
@@ -89,7 +89,7 @@ class UsersController extends Controller
                      $newObject->state = $request->get('state',1);
                      $newObject->save();
                      
-                     $objectSee = Users::whereRaw('id=?',$newObject->id)->with('roles')->first();
+                     $objectSee = Users::whereRaw('id=?',$newObject->id)->with('roles','reportes')->first();
                      if ($objectSee) {
                         Mail::send('emails.confirm', ['empresa' => 'Jose Daniel Rodriguez', 'url' => 'https://www.JoseDanielRodriguez.com', 'app' => 'http://me.JoseDanielRodriguez.gt', 'password' => $request->get('password'), 'username' => $objectSee->username, 'codigo' => $objectSee->codigo, 'email' => $objectSee->email, 'name' => $objectSee->nombres.' '.$objectSee->apellidos,], function (Message $message) use ($objectSee){
                             $message->from('jdanielr61@gmail.com', 'Info Jose Daniel Rodriguez')
@@ -134,7 +134,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $objectSee = Users::whereRaw('id=?',$id)->with('roles','comprados','edecanes')->first();
+        $objectSee = Users::whereRaw('id=?',$id)->with('roles','reportes','comprados','edecanes')->first();
         if ($objectSee) {
             return Response::json($objectSee, 200);
         }
