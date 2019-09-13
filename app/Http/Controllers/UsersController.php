@@ -91,11 +91,11 @@ class UsersController extends Controller
                      
                      $objectSee = Users::whereRaw('id=?',$newObject->id)->with('roles','reportes')->first();
                      if ($objectSee) {
-                        Mail::send('emails.confirm', ['empresa' => 'Jose Daniel Rodriguez', 'url' => 'https://www.JoseDanielRodriguez.com', 'app' => 'http://me.JoseDanielRodriguez.gt', 'password' => $request->get('password'), 'username' => $objectSee->username, 'codigo' => $objectSee->codigo, 'email' => $objectSee->email, 'name' => $objectSee->nombres.' '.$objectSee->apellidos,], function (Message $message) use ($objectSee){
-                            $message->from('jdanielr61@gmail.com', 'Info Jose Daniel Rodriguez')
-                                    ->sender('jdanielr61@gmail.com', 'Info Jose Daniel Rodriguez')
+                        Mail::send('emails.confirm', ['empresa' => 'P2P', 'url' => 'http://www.influmedia.com', 'app' => 'http://www.influmedia.com.gt', 'password' => $request->get('password'), 'username' => $objectSee->username, 'codigo' => $objectSee->codigo, 'email' => $objectSee->email, 'name' => $objectSee->nombres.' '.$objectSee->apellidos,], function (Message $message) use ($objectSee){
+                            $message->from('p2pReportes@gmail.com', 'Reportes P2P')
+                                    ->sender('p2pReportes@gmail.com', 'Reportes P2P')
                                     ->to($objectSee->email, $objectSee->nombres.' '.$objectSee->apellidos)
-                                    ->replyTo('jdanielr61@gmail.com', 'Info Jose Daniel Rodriguez')
+                                    ->replyTo('p2pReportes@gmail.com', 'Reportes P2P')
                                     ->subject('Comprobante');
                         
                         });
